@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #pre{
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+        #order{
+            background-color:pink;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:id="css"></div>
+        <button @click="change">切换</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data:{
+            css: "pre"
+        },
+        methods:{
+            change: function(){
+                if(this.css === "pre"){
+                    this.css = "order";
+                }else{
+                    this.css = "pre";
+                }
+            }
+        }
+    })
+</script>
+</html>
