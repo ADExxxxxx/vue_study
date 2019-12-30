@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        
+        <!-- text edit -->
+        <input type="text" v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+    
+        <!-- multiline -->
+        <textarea v-model="message1" placeholder="edit"></textarea>
+        <span>Multiline message is:</span>
+        <p>{{message1}}</p>
+
+        <!-- checkbox -->
+        <input type="checkbox" v-model="checked">
+        <label>{{checked}}</label>
+        
+    </div>
+
+    
+
+</body>
+<script src="vue.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message: "",
+            message1: "",
+            checked:true
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
