@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 这里的自定义事件好像不能用大写  -->
+        <blank @myevent="handEvent()"></blank>
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component("blank",{
+        template:`
+        <div>
+            <button @click="payLoad()">click</button>
+        </div>
+        `,
+        methods:{
+            payLoad(){
+                console.log("test");
+                this.$emit("myevent");
+            }
+        }
+    });
+    new Vue({
+        el: "#app",
+        data: {},
+        methods:{
+            handEvent(){
+                console.log("get:");
+            }
+        }
+    })
+</script>
+
+</html>
