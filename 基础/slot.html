@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <!--组件内元素不显示 本质上是父亲的组件-->
+            <div>aaaaaaaaaa</div>
+        </child>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component("child", {
+        template:`<div>
+            child
+            <slot></slot> <!-- 用以接收插入元素 -->
+        </div>`
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            datalist:["11111", "22222", "333333"]
+        }
+    })
+</script>
+</html>

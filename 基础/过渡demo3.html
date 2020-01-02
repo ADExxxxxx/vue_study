@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 过渡动画 */
+        .kerwinfade-enter-active, .kerwinfade-leave-active{
+            transition: all 1.5s;
+        }
+
+        .kerwinfade-enter, .kerwinfade-leave-to{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+
+        /* 关键帧动画 */
+        .kerwinbounce-enter-active{
+            animation: bounce-in .5s;
+        }
+
+        .kerwinbounce-leave-active{
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in{
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            };
+            100%{
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <transition name="kerwinbounce" mode="out-in">
+            <component :is="who"></component>
+        </transition>
+        <footer>
+            <ul>
+                <li><a @click="who='home'">首页</a></li>
+                <li><a @click="who='list'">列表页</a></li>
+                <li><a @click="who='shopcar'">购物车页面</a></li>
+            </ul>
+        </footer>
+    </div>
+
+</body>
+<script src="vue.js"></script>
+<script>
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            who:"home"
+        },
+        components:{
+            "home":{
+                template:`<div>home</div>`
+            },
+            "list":{
+                template:`<div>list</div>`
+            },
+            "shopcar":{
+                template:`<div>shopcar</div>`
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* 过渡动画 */
+        .kerwinfade-enter-active, .kerwinfade-leave-active{
+            transition: all 1.5s;
+        }
+
+        .kerwinfade-enter, .kerwinfade-leave-to{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+
+        /* 关键帧动画 */
+        .kerwinbounce-enter-active{
+            animation: bounce-in .5s;
+        }
+
+        .kerwinbounce-leave-active{
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in{
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            };
+            100%{
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">click</button>
+
+        <!-- Vue内置标签 动画效果需要自己定义 -->
+        <transition name="kerwinbounce">
+            <div v-show="isShow">111111111111</div>
+        </transition>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            isShow: false
+        },
+        methods:{}
+    })
+</script>
+</html>

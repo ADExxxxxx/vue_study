@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <weixinauthor></weixinauthor>
+        <weixinuser></weixinuser>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    var bus = new Vue(); //一个空的Vue实例作为事件总线
+    //bus.$on 在合适位置订阅
+
+    //事件发布者，需要发布函数
+    Vue.component("weixinauthor", {
+        template:`<div>
+            微信作者
+            <input type="text" ref="mytext" />
+            <button @click="handClick">发布</button>
+        </div>
+        `,
+        methods:{
+            handClick(){
+                //发送的订阅的信息
+                bus.$emit("weixinmessage", this.$refs.mytext.value);
+            }
+        }
+    })
+
+    // 事件接收者，需要设置订阅
+    Vue.component("weixinuser", {
+        template:`<div style="background:yellow">
+            微信用户
+        </div>
+        `,
+        mounted(){
+            bus.$on("weixinmessage", (data)=>{
+                //获取到订阅信息
+                console.log("收到推送", data);
+            });
+        }
+    })
+
+    new Vue({
+        el:"#app"
+    })
+</script>
+</html>
